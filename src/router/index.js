@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from '../pages/Home/Home.vue';
 import { getAuth } from "firebase/auth";
 import CarDetails from '../pages/CarDetails/CarDetails.vue';
-import HomeScreen from '../pages/HomePage/HomePage.vue';
+import HomeScreen from '../pages/HomeScreen/HomeScreen.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
