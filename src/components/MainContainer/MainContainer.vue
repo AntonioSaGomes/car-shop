@@ -29,6 +29,7 @@ export default {
       this.$auth.onAuthStateChanged((user) => {
         if (user) {
           const { email, displayName } = user;
+          console.log(email);
           this.setUser({ email, displayName });
           this.$router.push({ name: "cars" });
         } else {

@@ -2,7 +2,6 @@ import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from 'firebase/
 
 async function googleLogin() {
     try {
-        console.log('hello')
         const provider = new GoogleAuthProvider();
         const auth = getAuth();
 
