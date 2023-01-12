@@ -95,7 +95,6 @@ export default {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1.5rem;
-  grid-auto-rows: max(200px, 33%);
   height: 100%;
   overflow-y: auto;
 }
@@ -105,5 +104,23 @@ export default {
   width: 100%;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 1000px) {
+  .cars-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .cars-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cars-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>

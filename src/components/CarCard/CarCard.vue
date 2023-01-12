@@ -2,7 +2,7 @@
   <div class="car-card">
     <img
       class="card-image clickable"
-      :src="car?.imgUrl"
+      :src="`/cars/${car?.imgUrl}`"
       @click="goToCarDetails"
     />
     <div class="car-card-details">
