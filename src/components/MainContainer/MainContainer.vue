@@ -52,6 +52,12 @@ export default {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin: 2rem;
+  padding: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+  .main-container {
+    padding: 0.5rem;
+  }
 }
 </style>

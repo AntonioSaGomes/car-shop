@@ -3,7 +3,6 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-  height: 100vh;
   height: fill-available;
   height: -webkit-fill-available;
   --main-color: #e2effd;
@@ -44,8 +43,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
   height: fill-available;
   height: webkit-fill-available;
 }
@@ -74,7 +72,6 @@ button:focus-visible {
 }
 
 #app {
-  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -93,29 +90,16 @@ button:focus-visible {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   body {
-    color: #213547;
+    color: black;
     background-color: #ffffff;
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: blue;
   }
   input {
     background-color: white;
@@ -189,8 +173,24 @@ button:focus-visible {
 
 :root,
 html,
-body,
+body {
+  height: 100vh;
+  height: -webkit-fill-available;
+}
+
 #app {
   height: 100vh;
   height: -webkit-fill-available;
+}
+
+@media screen and (max-width: 800px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    font-size: 12px;
+  }
 }
