@@ -4,6 +4,7 @@
       class="card-image clickable"
       :src="`/cars/${car?.imgUrl}`"
       @click="goToCarDetails"
+      @load="load"
     />
     <div class="car-card-details">
       <div class="car-name">
@@ -17,6 +18,7 @@
 
 <script>
 export default {
+  emits: ["loaded-image"],
   props: {
     car: {
       type: Object,
@@ -35,6 +37,9 @@ export default {
     goToCarDetails() {
       const { carID } = this.car;
       this.$router.push({ name: "car-details", params: { carID: carID } });
+    },
+    load() {
+      this.$emit("loaded-image");
     },
   },
 };

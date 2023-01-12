@@ -1,19 +1,28 @@
 <template>
-  <div class="cars-container">
-    <CarCard v-for="car in cars" :key="car" :car="car" />
-  </div>
-  <div class="cars-pagination">
-    <vue-awesome-paginate
-      v-if="totalItems"
-      :total-items="totalItems"
-      :items-per-page="10"
-      :max-pages-shown="5"
-      v-model="currentPage"
-    />
+  <LoadingSpinner v-show="loading" />
+  <div v-show="!loading" class="home-container">
+    <div class="cars-container">
+      <CarCard
+        v-for="car in cars"
+        :key="car"
+        :car="car"
+        @loaded-image="loadImages++"
+      />
+    </div>
+    <div class="cars-pagination">
+      <vue-awesome-paginate
+        v-if="totalItems"
+        :total-items="totalItems"
+        :items-per-page="10"
+        :max-pages-shown="5"
+        v-model="currentPage"
+      />
+    </div>
   </div>
 </template>
 <script>
 import CarCard from "../../components/CarCard/CarCard.vue";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner.vue";
 import {
   getFirstCars,
   getPaginatedCars,
@@ -28,14 +37,22 @@ export default {
       totalItems: null,
       lastVisible: null,
       pageSize: 10,
+      loading: false,
+      loadImages: 0,
     };
   },
-  components: { CarCard },
+  components: { CarCard, LoadingSpinner },
   created() {
     this.getCarCount();
     this.getFirstCars();
   },
   watch: {
+    loadImages() {
+      if (this.pageSize === this.loadImages) {
+        this.loading = false;
+        this.loadImages = 0;
+      }
+    },
     currentPage(curr, prev) {
       if (curr === 1) {
         this.getFirstCars();
@@ -55,11 +72,9 @@ export default {
         id: doc.id,
       }));
       this.cars = cars;
-      console.log(this.cars.map((x) => x.brand + " " + x.model));
     },
     async getPaginatedCars(after) {
       this.cars = [];
-      console.log("hereee", this.lastVisible);
       const snapshots = await getPaginatedCars(
         this.$firestore,
         this.pageSize,
@@ -91,6 +106,11 @@ export default {
 </script>
 
 <style scoped>
+.home-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .cars-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
