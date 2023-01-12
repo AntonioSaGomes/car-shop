@@ -96,6 +96,7 @@ export default {
   grid-template-columns: repeat(5, 1fr);
   gap: 1.5rem;
   height: 100%;
+  flex-basis: 85;
   overflow-y: auto;
 }
 

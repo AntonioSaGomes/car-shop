@@ -48,6 +48,7 @@ export default {
 
 <style scoped>
 .main-container {
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
