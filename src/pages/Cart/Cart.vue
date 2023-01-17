@@ -34,6 +34,6 @@ export default {
   flex-direction: column;
   gap: 2rem;
   align-items: flex-start;
-  width: 50%;
+  overflow-y: auto;
 }
 </style>

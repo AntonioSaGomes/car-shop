@@ -17,6 +17,9 @@
 </template>
 
 <script>
+import { mapActions } from "pinia";
+import useCarStore from "../../store/carStore";
+
 export default {
   emits: ["loaded-image"],
   props: {
@@ -31,11 +34,13 @@ export default {
     };
   },
   methods: {
+    ...mapActions(useCarStore, ["selectCar"]),
     removeFromCart() {
       this.removeFromCart(this.car);
     },
     goToCarDetails() {
       const { carID } = this.car;
+      this.selectCar(this.car);
       this.$router.push({ name: "car-details", params: { carID: carID } });
     },
     load() {

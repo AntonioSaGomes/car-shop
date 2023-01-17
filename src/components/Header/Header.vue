@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="header-details clickable" @click="selectPage('home')">
+    <div class="header-details clickable" @click="selectPage('cars')">
       <img class="logo" src="/header/logo.svg" />
       <h1 class="header-title">Car Shop</h1>
     </div>

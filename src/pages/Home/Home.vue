@@ -23,6 +23,8 @@
 <script>
 import CarCard from "../../components/CarCard/CarCard.vue";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner.vue";
+import useCarStore from "../../store/carStore";
+import { mapActions } from "pinia";
 import {
   getFirstCars,
   getPaginatedCars,
@@ -61,8 +63,12 @@ export default {
         this.getPaginatedCars(after);
       }
     },
+    cars() {
+      this.setCars(this.cars);
+    },
   },
   methods: {
+    ...mapActions(useCarStore, ["setCars"]),
     async getFirstCars() {
       this.cars = [];
       const snapshots = await getFirstCars(this.$firestore, this.pageSize);

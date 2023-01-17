@@ -6,6 +6,8 @@ const useCarStore = defineStore({
   state: () =>
     reactive({
       cart: [],
+      cars: [],
+      selectedCar: null,
     }),
   getters: {
     getCart() {
@@ -13,10 +15,17 @@ const useCarStore = defineStore({
     },
   },
   actions: {
+    setCars(cars){
+      this.cars = cars;
+    },
+    selectCar(car){
+      this.selectedCar = car;
+    },
     removeFromCart(product) {
       this.cart = this.cart.filter((p) => p.id !== product.id);
     },
     addToCart(product) {
+      console.log(product);
       this.cart.push(product)
     },
   },
